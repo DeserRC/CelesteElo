@@ -1,0 +1,87 @@
+# The block below defines the data for storage.
+#
+# - Only data that will not be used frequently.
+storage:
+  # Remotes database - (Requires filling in the data block).
+  #
+  # - MongoDB
+  # - MySQL
+  # - PostgreSQL
+
+  # Local database - (Doesn't requires filling in the data block).
+  #
+  # - H2
+  # - SQLite
+  driver: ""
+
+  # The block below defines the data settings of the storage database.
+  #
+  # - If you are using a flat/local storage database, you do not need to change any settings.
+  data:
+    # Storage Address.
+    #
+    # - Don't define the address port.
+    # - Clusters aren't supported here, use the URI option to define them.
+    hostname: ""
+    # Storage Port.
+    #
+    # - Define the port as an integer value, not a string.
+    port: 0
+    # Storage Database.
+    #
+    # - If you are using MongoDB this is the database collection storage
+    # and not the database authentication.
+    database: ""
+    # Storage Username.
+    username: ""
+    # Storage Password.
+    #
+    # - Password hashes are not supported.
+    password: ""
+    # Storage SSL.
+    #
+    # - If you want the connection to be made via SSL instead of HTTP define true.
+    # - Define the ssl as an boolean value, not a string.
+    ssl: true
+
+    # The block below is necessary to define it only when using MongoDB.
+    mongodb:
+      # Storage Database Authentication.
+      #
+      # - This is the database authentication and not the database collection storage.
+      authentication: ""
+      # Storage URI.
+      #
+      # - Only for cluster connection or URI connection.
+      # - If you are not aware of this type of connections read the article below.
+      #
+      # URI Wiki: https://docs.mongodb.com/manual/reference/connection-string/
+      uri: ""
+
+# The language in which the plugin
+language: "en-us"
+
+# The block below defines the data for the elo.
+elo:
+  # The elo the player will get when they first join the server.
+  default: 100
+
+# The block below defines the data for the ranks.
+#
+# - Ranks with the same elo are not allowed.
+# - Ranks with the same name are not allowed.
+#
+# Example:
+# legend: -> This is a generic name that doesn't affect the plugin at all.
+#   name: -> Name of the rank that will be displayed.
+#   prefix: -> Rank prefix is a reduction of the name that will be displayed.
+#   elo: -> It is the necessary elo for the player to reach this rank.
+ranks:
+  legend:
+    name: "&6Legend"
+    prefix: "§6⍟"
+    elo: 0
+  champion:
+    name: "§4Champion"
+    prefix: "§4♛"
+    elo: 1000

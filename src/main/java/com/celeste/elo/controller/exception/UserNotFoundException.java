@@ -1,0 +1,17 @@
+package com.celeste.elo.controller.exception;
+
+public class UserNotFoundException extends RuntimeException {
+
+  public UserNotFoundException(final String error) {
+    super(error);
+  }
+
+  public UserNotFoundException(final Throwable cause) {
+    super(cause);
+  }
+
+  public UserNotFoundException(final String error, final Throwable cause) {
+    super(error, cause);
+  }
+
+}
