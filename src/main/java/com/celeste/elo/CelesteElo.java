@@ -4,6 +4,7 @@ import com.celeste.elo.factory.ConnectionFactory;
 import com.celeste.elo.factory.RankFactory;
 import com.celeste.elo.factory.SettingsFactory;
 import com.celeste.elo.factory.UserFactory;
+import com.celeste.elo.view.listener.UserListener;
 import com.celeste.library.core.util.Logger;
 import com.celeste.library.spigot.AbstractBukkitPlugin;
 import java.util.concurrent.CompletableFuture;
@@ -77,7 +78,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
   }
 
   private void loadListeners() {
-
+    registerListeners(new UserListener(this));
   }
 
   public static CelesteElo getInstance() {

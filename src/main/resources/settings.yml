@@ -59,7 +59,7 @@ storage:
       uri: ""
 
 # The language in which the plugin
-language: "en-us"
+language: "pt-br"
 
 # The block below defines the data for the elo.
 elo:

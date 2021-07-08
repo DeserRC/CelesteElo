@@ -32,6 +32,11 @@ dependencies {
     implementation 'com.github.celesteoficial.java-library:spigot:e2cbb88ec9'
 
     /**
+     * PLUGIN DEPENDENCY
+     */
+    compileOnly 'me.clip:placeholderapi:2.10.9'
+
+    /**
      * DATABASE FRAMEWORK
      */
     implementation 'com.github.celesteoficial.databases:core:4.1.8'

@@ -1,0 +1,60 @@
+# Mensagens referentes a eventos.
+events:
+  # Mensagem que são enviadas em eventos relacionados a elo.
+  elo:
+    # Mensagem que será enviada ao matar um jogador.
+    #
+    # Placeholders:
+    #
+    # %target% - Nome da vitima.
+    # %elo% - Quantia de elo que o jogador ganhou.
+    # %new_elo% - Elo atual do jogador.
+    kill: "&6&l[ELO] &7Você ganhou &6%elo% &7de elo."
+    # Mensagem que será enviada ao morrer para um jogador.
+    #
+    # Placeholders:
+    #
+    # %target% - Nome do assassino.
+    # %elo% - Quantia de elo que o jogador perdeu.
+    # %new_elo% - Elo atual do jogador.
+    death: "&6&l[ELO] &7Você perdeu &6%elo% &7de elo."
+  # Mensagem que são enviadas em eventos relacionados a killstreak.
+  #
+  # OBS: KillStreak somente são contados caso sejam maior que 10.
+  killstreak:
+    # Mensagem que será enviada ao jogador conquistar um killstreak.
+    #
+    # Placeholders:
+    #
+    # %target% - Nome da vitima.
+    # %killstreak% - Streak atual.
+    kill: "&6&l[STREAK] &7Você está com o killstreak de &6%killstreak%&7."
+    # Mensagem que será enviada ao jogador perder o seu killstreak.
+    #
+    # Placeholders:
+    #
+    # %target% - Nome do assassino.
+    # %killstreak% - Streak perdido.
+    death: "&6&l[STREAK] &7Você perdeu o killstreak de &6%killstreak%&7."
+    # Mensagens que serão enviadas em broadcast referentes ao killstreak.
+    #
+    # OBS: Somente serão enviados broadcast em numeros divisiveis por 10.
+    broadcast:
+      # Habilita/Desabilita as mensagens de broadcast do killstreak.
+      use: true
+      # Mensagem que será enviada ao jogador conquistar um killstreak.
+      #
+      # Placeholders:
+      #
+      # %player% - Nome do assassino.
+      # %target% - Nome da vitima.
+      # %killstreak% - Streak atual.
+      kill: "&6&l[STREAK] &6%player% &7acaba de fazer um killstreak de &6%killstreak%&7."
+      # Mensagem que será enviada ao jogador perder o seu killstreak.
+      #
+      # Placeholders:
+      #
+      # %player% - Nome da vitima.
+      # %target% - Nome do assassino.
+      # %killstreak% - Streak perdido.
+      death: "&6&l[STREAK] &6%target% &7matou o jogador &6%player% que tinha um killstreak de &6%killstreak%&7."
