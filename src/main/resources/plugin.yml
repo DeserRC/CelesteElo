@@ -2,4 +2,5 @@ name: CelesteElo
 version: 1.0.0
 api-version: 1.13
 main: com.celeste.elo.CelesteElo
+softdepend: [PlaceholderAPI]
 authors: [Deser]

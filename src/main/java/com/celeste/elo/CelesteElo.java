@@ -5,6 +5,7 @@ import com.celeste.elo.factory.RankFactory;
 import com.celeste.elo.factory.SettingsFactory;
 import com.celeste.elo.factory.UserFactory;
 import com.celeste.elo.view.listener.UserListener;
+import com.celeste.elo.view.placeholder.RankPlaceholder;
 import com.celeste.library.core.util.Logger;
 import com.celeste.library.spigot.AbstractBukkitPlugin;
 import java.util.concurrent.CompletableFuture;
@@ -22,6 +23,8 @@ public final class CelesteElo extends AbstractBukkitPlugin {
   private RankFactory rankFactory;
   private UserFactory userFactory;
 
+  private RankPlaceholder rankPlaceholder;
+
   @Override
   public void onLoad() {
     try {
@@ -31,6 +34,8 @@ public final class CelesteElo extends AbstractBukkitPlugin {
       this.connectionFactory = new ConnectionFactory(this);
       this.rankFactory = new RankFactory(this);
       this.userFactory = new UserFactory(this);
+
+      this.rankPlaceholder = new RankPlaceholder(this);
     } catch (Exception exception) {
       Logger.getLogger().atSevere()
           .withCause(exception)
@@ -41,9 +46,12 @@ public final class CelesteElo extends AbstractBukkitPlugin {
   @Override
   public void onEnable() {
     try {
-      loadTasks();
-      loadCommands();
-      loadListeners();
+      CompletableFuture.runAsync(userFactory.getUserGetTask(), EXECUTOR);
+      SCHEDULED.scheduleWithFixedDelay(userFactory.getUserUpdateTask(), 10, 10, TimeUnit.MINUTES);
+
+      registerListeners(new UserListener(this));
+
+      rankPlaceholder.register();
     } catch (Exception exception) {
       Logger.getLogger().atSevere()
           .withCause(exception)
@@ -61,24 +69,12 @@ public final class CelesteElo extends AbstractBukkitPlugin {
       SCHEDULED.shutdown();
 
       HandlerList.unregisterAll();
+      rankPlaceholder.unregister();
     } catch (Exception exception) {
       Logger.getLogger().atSevere()
           .withCause(exception)
           .log("There was an error disabling the plugin.");
     }
-  }
-
-  private void loadTasks() {
-    CompletableFuture.runAsync(userFactory.getUserGetTask(), EXECUTOR);
-    SCHEDULED.scheduleWithFixedDelay(userFactory.getUserUpdateTask(), 10, 10, TimeUnit.MINUTES);
-  }
-
-  private void loadCommands() {
-
-  }
-
-  private void loadListeners() {
-    registerListeners(new UserListener(this));
   }
 
   public static CelesteElo getInstance() {

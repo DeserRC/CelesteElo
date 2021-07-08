@@ -75,9 +75,9 @@ public final class UserListener implements Listener {
         .orElseThrow(() -> new RuntimeException("An error occurred getting the elo base."));
 
     int multiply = targetIndex < userIndex
-        ? (userRank.getElo() - targetRank.getElo()) / 25 / 10
+        ? (user.getElo() - target.getElo()) / 25 / 10
         : userIndex < targetIndex
-        ? (targetRank.getElo() - userRank.getElo()) / 25 / 10
+        ? (target.getElo() - user.getElo()) / 25 / 10
         : 0;
 
     if (multiply < 0) {
@@ -103,6 +103,32 @@ public final class UserListener implements Listener {
         .replace("%target%", killer.getDisplayName())
         .replace("%elo% ", String.valueOf(eloLose))
         .replace("%new_elo%", String.valueOf(user.getElo())));
+
+    killer.sendMessage(messages.getString("events.elo.kill")
+        .replace("%target%", player.getDisplayName())
+        .replace("%elo% ", String.valueOf(eloReward))
+        .replace("%new_elo%", String.valueOf(target.getElo())));
+
+    final Rank newUserRank = userController.getRank(user);
+    final Rank newTargetRank = userController.getRank(target);
+
+    if (userRank != newUserRank) {
+      player.sendMessage(messages.getString("events.elo.demote")
+          .replace("%elo%", String.valueOf(user.getElo()))
+          .replace("%old_rank%", userRank.getName())
+          .replace("%old_rank_prefix%", userRank.getPrefix())
+          .replace("%new_rank%", newUserRank.getName())
+          .replace("%new_rank_prefix%", newUserRank.getPrefix()));
+    }
+
+    if (targetRank != newTargetRank) {
+      player.sendMessage(messages.getString("events.elo.promote")
+          .replace("%elo%", String.valueOf(target.getElo()))
+          .replace("%old_rank%", targetRank.getName())
+          .replace("%old_rank_prefix%", targetRank.getPrefix())
+          .replace("%new_rank%", newTargetRank.getName())
+          .replace("%new_rank_prefix%", newTargetRank.getPrefix()));
+    }
 
     killer.sendMessage(messages.getString("events.elo.kill")
         .replace("%target%", player.getDisplayName())

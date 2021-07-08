@@ -18,6 +18,22 @@ events:
     # %elo% - Quantia de elo que o jogador perdeu.
     # %new_elo% - Elo atual do jogador.
     death: "&6&l[ELO] &7Você perdeu &6%elo% &7de elo."
+    # Mensagem que será enviada quando o jogador upar de rank.
+    #
+    # %elo% - Quantia de elo atual do jogador.
+    # %old_rank% - O nome do rank antigo do jogador.
+    # %old_rank_prefix% - O prefixo do rank antigo do jogador.
+    # %new_rank% - O nome do rank atual do upou.
+    # %new_rank_prefix% - O prefixo do rank atual do upou.
+    promote: "&6&l[ELO] &7Você acaba de upar para o rank %new_rank_prefix%&7."
+    # Mensagem que será enviada quando o jogador cair de rank.
+    #
+    # %elo% - Quantia de elo atual do jogador.
+    # %old_rank% - O nome do rank antigo do jogador.
+    # %old_rank_prefix% - O prefixo do rank antigo do jogador.
+    # %new_rank% - O nome do rank atual do upou.
+    # %new_rank_prefix% - O prefixo do rank atual do upou.
+    demote: "&6&l[ELO] &7Você acaba de cair para o rank %new_rank_prefix%&7."
   # Mensagem que são enviadas em eventos relacionados a killstreak.
   #
   # OBS: KillStreak somente são contados caso sejam maior que 10.

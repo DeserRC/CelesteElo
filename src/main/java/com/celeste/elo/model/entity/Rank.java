@@ -12,4 +12,8 @@ public class Rank {
 
   private final int elo;
 
+  private Rank() {
+    this(null, null, 0);
+  }
+
 }

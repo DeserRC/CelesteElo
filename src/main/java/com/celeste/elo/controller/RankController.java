@@ -3,7 +3,6 @@ package com.celeste.elo.controller;
 import com.celeste.configuration.model.provider.Configuration;
 import com.celeste.elo.CelesteElo;
 import com.celeste.elo.controller.exception.RankNotFoundException;
-import com.celeste.elo.factory.RankFactory;
 import com.celeste.elo.model.entity.Rank;
 import com.celeste.elo.model.entity.comparator.EloComparator;
 import com.celeste.elo.model.map.RankMap;
