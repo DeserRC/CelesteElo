@@ -26,18 +26,18 @@ public final class RankPlaceholder extends PlaceholderExpansion {
   public String onPlaceholderRequest(final Player player, @NotNull final String parameters) {
     final UserController userController = plugin.getUserFactory().getUserController();
 
-    if (parameters.equalsIgnoreCase("prefix")) {
-      final User user = userController.getById(player.getUniqueId());
-      final Rank rank = userController.getRank(user);
-
-      return rank.getPrefix();
-    }
-
     if (parameters.equalsIgnoreCase("rank")) {
       final User user = userController.getById(player.getUniqueId());
       final Rank rank = userController.getRank(user);
 
       return rank.getName();
+    }
+
+    if (parameters.equalsIgnoreCase("prefix")) {
+      final User user = userController.getById(player.getUniqueId());
+      final Rank rank = userController.getRank(user);
+
+      return rank.getPrefix();
     }
 
     if (parameters.equalsIgnoreCase("elo")) {
@@ -52,7 +52,7 @@ public final class RankPlaceholder extends PlaceholderExpansion {
   @Override
   @NotNull
   public String getIdentifier() {
-    return "drazyh_elo";
+    return "elo";
   }
 
   @Override
