@@ -11,6 +11,7 @@ public final class DependencyFactory {
 
   public DependencyFactory(final CelesteElo plugin) {
     try {
+      Class.forName("me.clip.placeholderapi.expansion.PlaceholderExpansion");
       this.rankPlaceholder = new RankPlaceholder(plugin);
     } catch (Exception ignored) {
       // TODO: If it generates an exception it is because it is not using this dependency.

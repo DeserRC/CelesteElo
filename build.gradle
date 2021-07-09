@@ -39,8 +39,8 @@ dependencies {
     /**
      * DATABASE FRAMEWORK
      */
-    implementation "com.github.celesteoficial.databases:core:4.1.8"
-    implementation "com.github.celesteoficial.databases:storage:4.1.8"
+    implementation "com.github.celesteoficial.databases:core:4.1.9"
+    implementation "com.github.celesteoficial.databases:storage:4.1.9"
 
     /**
      * CONFIGURATION FRAMEWORK
