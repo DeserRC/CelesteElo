@@ -10,16 +10,12 @@ import com.celeste.library.core.util.Validation;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public final class RankController {
 
   private final CelesteElo plugin;
-
-  public RankController(final CelesteElo plugin) {
-    this.plugin = plugin;
-
-    load();
-  }
 
   public Rank getRankByName(final String rank) {
     final RankMap ranks = plugin.getRankFactory().getRanks();
@@ -69,7 +65,7 @@ public final class RankController {
     return settings.getInt("elo.default");
   }
 
-  private void load() {
+  public void load() {
     final Configuration settings = plugin.getSettingsFactory().getSettings();
     final RankMap ranks = plugin.getRankFactory().getRanks();
 
