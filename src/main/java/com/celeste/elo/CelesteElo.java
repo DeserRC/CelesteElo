@@ -37,9 +37,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
 
       this.rankPlaceholder = new RankPlaceholder(this);
     } catch (Exception exception) {
-      Logger.getLogger().atSevere()
-          .withCause(exception)
-          .log("There was an error loading the plugin.");
+      exception.printStackTrace();
     }
   }
 
@@ -53,9 +51,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
 
       rankPlaceholder.register();
     } catch (Exception exception) {
-      Logger.getLogger().atSevere()
-          .withCause(exception)
-          .log("There was an error enabling the plugin.");
+      exception.printStackTrace();
     }
   }
 
@@ -71,9 +67,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
       HandlerList.unregisterAll();
       rankPlaceholder.unregister();
     } catch (Exception exception) {
-      Logger.getLogger().atSevere()
-          .withCause(exception)
-          .log("There was an error disabling the plugin.");
+      exception.printStackTrace();
     }
   }
 

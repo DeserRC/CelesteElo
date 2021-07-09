@@ -1,10 +1,10 @@
 plugins {
-    id 'java'
+    id "java"
     id "com.github.johnrengelman.shadow" version "6.1.0"
 }
 
-group 'com.celeste.elo'
-version '1.0.0-SNAPSHOT'
+group "com.celeste.elo"
+version "1.0.0-SNAPSHOT"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -13,61 +13,61 @@ repositories {
     mavenCentral()
     mavenLocal()
 
-    maven { url 'https://jitpack.io' }
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
-    maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+    maven { url "https://jitpack.io" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    maven { url "https://repo.extendedclip.com/content/repositories/placeholderapi/" }
 }
 
 dependencies {
     /**
      * SPIGOT DEPENDENCY
      */
-    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+    compileOnly "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
 
     /**
      * SPIGOT FRAMEWORK
      */
-    implementation 'com.github.SaiintBrisson.command-framework:bukkit:1.2.0'
-    implementation 'com.github.celesteoficial.java-library:spigot:e2cbb88ec9'
+    implementation "com.github.SaiintBrisson.command-framework:bukkit:1.2.0"
+    implementation "com.github.celesteoficial.java-library:spigot:3.2.5"
 
     /**
      * PLUGIN DEPENDENCY
      */
-    compileOnly 'me.clip:placeholderapi:2.10.9'
+    compileOnly "me.clip:placeholderapi:2.10.9"
 
     /**
      * DATABASE FRAMEWORK
      */
-    implementation 'com.github.celesteoficial.databases:core:4.1.8'
-    implementation 'com.github.celesteoficial.databases:storage:4.1.8'
+    implementation "com.github.celesteoficial.databases:core:4.1.8"
+    implementation "com.github.celesteoficial.databases:storage:4.1.8"
 
     /**
      * CONFIGURATION FRAMEWORK
      */
-    implementation 'com.github.celesteoficial:configuration:1.1.0'
+    implementation "com.github.celesteoficial:configuration:1.1.0"
 
     /**
      * LIBRARY FRAMEWORK
      */
-    implementation 'com.github.celesteoficial.java-library:core:e2cbb88ec9'
-    implementation 'com.google.guava:guava:30.1.1-jre'
-    implementation 'com.google.flogger:flogger:0.6'
+    implementation "com.github.celesteoficial.java-library:core:3.2.5"
+    implementation "com.google.guava:guava:30.1.1-jre"
+    implementation "com.google.flogger:flogger:0.6"
 
     /**
      * ANNOTATION FRAMEWORK
      */
-    compileOnly 'org.projectlombok:lombok:1.18.20'
-    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    compileOnly "org.projectlombok:lombok:1.18.20"
+    annotationProcessor "org.projectlombok:lombok:1.18.20"
 
-    compileOnly 'org.jetbrains:annotations:21.0.1'
-    annotationProcessor 'org.jetbrains:annotations:21.0.1'
+    compileOnly "org.jetbrains:annotations:21.0.1"
+    annotationProcessor "org.jetbrains:annotations:21.0.1"
 
     /**
      * TEST FRAMEWORK
      */
-    testCompileOnly 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testCompileOnly "org.junit.jupiter:junit-jupiter-api:5.7.0"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
 }
 
 shadowJar {
@@ -75,7 +75,7 @@ shadowJar {
 }
 
 tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+    options.encoding = "UTF-8"
 }
 
 tasks.withType(Jar) {

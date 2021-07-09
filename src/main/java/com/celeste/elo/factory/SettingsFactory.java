@@ -34,7 +34,7 @@ public final class SettingsFactory {
         data.setData("resource", "settings.yml"));
 
     this.messages = ConfigurationFactory.getInstance().start(
-        data.setData("resource", "languages/" + settings.getString("language") + ".yml"));
+        data.setData("resource", "language/" + settings.getString("language") + ".yml"));
 
     messages.getReplaceRegistry().register("&", REPLACE);
   }

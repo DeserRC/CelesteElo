@@ -1,5 +1,6 @@
 package com.celeste.elo.model.entity;
 
+import com.celeste.databases.storage.model.annotation.Key;
 import com.celeste.databases.storage.model.annotation.Storable;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import org.bukkit.entity.Player;
 @Storable("elo_user")
 public class User {
 
+  @Key
   private final UUID id;
   private String name;
 
