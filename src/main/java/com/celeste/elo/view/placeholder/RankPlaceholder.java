@@ -49,12 +49,14 @@ public final class RankPlaceholder extends PlaceholderExpansion {
     return ERROR;
   }
 
-  @Override @NotNull
+  @Override
+  @NotNull
   public String getIdentifier() {
     return "drazyh_elo";
   }
 
-  @Override @NotNull
+  @Override
+  @NotNull
   public String getAuthor() {
     final PluginDescriptionFile description = plugin.getDescription();
 
@@ -64,7 +66,8 @@ public final class RankPlaceholder extends PlaceholderExpansion {
     return joiner.toString().substring(joiner.length() - 3);
   }
 
-  @Override @NotNull
+  @Override
+  @NotNull
   public String getVersion() {
     final PluginDescriptionFile description = plugin.getDescription();
 

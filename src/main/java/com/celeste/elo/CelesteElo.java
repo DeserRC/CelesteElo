@@ -1,6 +1,7 @@
 package com.celeste.elo;
 
 import com.celeste.elo.factory.ConnectionFactory;
+import com.celeste.elo.factory.DependencyFactory;
 import com.celeste.elo.factory.RankFactory;
 import com.celeste.elo.factory.SettingsFactory;
 import com.celeste.elo.factory.UserFactory;
@@ -9,6 +10,7 @@ import com.celeste.library.spigot.AbstractBukkitPlugin;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 
 @Getter
@@ -20,6 +22,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
   private ConnectionFactory connectionFactory;
   private RankFactory rankFactory;
   private UserFactory userFactory;
+  private DependencyFactory dependencyFactory;
 
   @Override
   public void onLoad() {
@@ -30,6 +33,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
       this.connectionFactory = new ConnectionFactory(this);
       this.rankFactory = new RankFactory(this);
       this.userFactory = new UserFactory(this);
+      this.dependencyFactory = new DependencyFactory(this);
     } catch (Exception exception) {
       exception.printStackTrace();
     }
@@ -44,7 +48,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
       registerListeners(new UserListener(this));
 
       rankFactory.getRankController().load();
-      rankFactory.getRankPlaceholder().register();
+      dependencyFactory.init();
     } catch (Exception exception) {
       exception.printStackTrace();
     }
@@ -55,7 +59,7 @@ public final class CelesteElo extends AbstractBukkitPlugin {
     try {
       CompletableFuture.runAsync(userFactory.getUserUpdateTask(), EXECUTOR).join();
       connectionFactory.getStorage().shutdown();
-      rankFactory.getRankPlaceholder().unregister();
+      dependencyFactory.shutdown();
 
       EXECUTOR.shutdown();
       SCHEDULED.shutdown();

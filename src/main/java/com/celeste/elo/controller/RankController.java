@@ -69,14 +69,17 @@ public final class RankController {
     final Configuration settings = plugin.getSettingsFactory().getSettings();
     final RankMap ranks = plugin.getRankFactory().getRanks();
 
+    ranks.clear();
+
     for (final String rankName : settings.getKeys("ranks")) {
       final String path = "ranks." + rankName + ".";
 
-      final String name = settings.getString(path + "name");
-      final String prefix = settings.getString(path + "prefix");
-      final int elo = settings.getInt(path + "elo");
+      final Rank rank = Rank.builder()
+          .name(settings.getString(path + "name"))
+          .prefix(settings.getString(path + "prefix"))
+          .elo(settings.getInt(path + "elo"))
+          .build();
 
-      final Rank rank = new Rank(name, prefix, elo);
       ranks.put(rank);
     }
   }
